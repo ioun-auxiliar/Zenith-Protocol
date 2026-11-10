@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-amber-primary: #f59e0b;
+  --color-amber-dark: #78350f;
+  --color-bg-dark: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-dark);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #fbbf24;
+}
+
+@layer base {
+  h1, h2, h3 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.glow-border {
+  @apply border border-amber-500/20 shadow-[0_0_20px_rgba(245,158,11,0.05)];
+}
+
+.wave-gradient {
+  background: linear-gradient(to top, rgba(245, 158, 11, 0.1), transparent);
+}
