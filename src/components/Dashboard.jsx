@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Database, Lock, Cpu, Server, Network, Terminal as TerminalIcon } from 'lucide-react';
+import { Activity, Database, Lock, Cpu, Terminal as TerminalIcon, Server, Network } from 'lucide-react';
 
 const Dashboard = () => {
   const stats = [
-    { icon: <Activity className="w-5 h-5" />, label: "Uptime", value: "99.99%", color: "text-green-400" },
-    { icon: <Database className="w-5 h-5" />, label: "Ingested", value: "4.2 TB", color: "text-blue-400" },
-    { icon: <Lock className="w-5 h-5" />, label: "Threats", value: "1,204", color: "text-red-400" },
+    { icon: <Activity className="w-5 h-5" />, label: "Network Uptime", value: "99.99%", color: "text-emerald-400" },
+    { icon: <Database className="w-5 h-5" />, label: "Data Ingested", value: "4.2 TB", color: "text-blue-400" },
+    { icon: <Lock className="w-5 h-5" />, label: "Threats Blocked", value: "1,204", color: "text-red-400" },
     { icon: <Cpu className="w-5 h-5" />, label: "Node Load", value: "12%", color: "text-amber-400" },
   ];
 
@@ -21,7 +21,6 @@ const Dashboard = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-32">
-      {/* Dashboard Header */}
       <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
         <div>
           <h2 className="text-sm font-bold tracking-[0.3em] text-amber-500 uppercase mb-2">Operational Status</h2>
@@ -37,7 +36,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {stats.map((stat, i) => (
           <motion.div
@@ -46,26 +44,21 @@ const Dashboard = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="stats-card relative group"
+            className="p-6 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl hover:border-white/20 transition-all duration-500 group"
           >
-            <div className={`absolute top-0 right-0 p-4 text-white/10 group-hover:text-white/20 transition-colors`}>
-              {stat.icon}
-            </div>
+            <div className={`text-white/20 mb-3 transition-colors group-hover:text-white/40`}>{stat.icon}</div>
             <div className="text-xs font-bold tracking-widest text-zinc-500 uppercase mb-2">{stat.label}</div>
             <div className={`text-3xl font-light tracking-tight ${stat.color}`}>{stat.value}</div>
           </motion.div>
         ))}
       </div>
 
-      {/* Main Console Area */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Live Feed */}
-        <div className="lg:col-span-2 glass-card overflow-hidden flex flex-col">
-          <div className="px-6 py-5 border-b border-white/10 bg-white/[0.02] flex justify-between items-center">
+        <div className="lg:col-span-2 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden flex flex-col">
+          <div className="px-6 py-4 border-b border-white/10 bg-white/[0.02] flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="p-1.5 rounded bg-red-500/20 text-red-500">
-                <TerminalIcon className="w-4 h-4" />
-              </div>
+              <TerminalIcon className="w-4 h-4 text-amber-500" />
               <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">Network Stream</h3>
             </div>
             <div className="flex items-center gap-3">
@@ -75,7 +68,6 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          
           <div className="p-8 font-mono text-sm space-y-4 h-[400px] overflow-y-auto scrollbar-hide">
             {logs.map((log, i) => (
               <motion.div 
@@ -98,9 +90,9 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* System Nodes */}
+        {/* Nodes */}
         <div className="flex flex-col gap-6">
-          <div className="glass-card p-6">
+          <div className="p-6 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl">
             <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 mb-6 flex items-center gap-2">
               <div className="w-1 h-4 bg-amber-500 rounded-full" />
               Node Topology
@@ -113,7 +105,7 @@ const Dashboard = () => {
             </div>
           </div>
           
-          <div className="glass-card p-6 bg-gradient-to-br from-amber-500/10 to-transparent border-amber-500/20">
+          <div className="p-6 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl">
             <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-amber-500 mb-2">System Health</h3>
             <div className="text-2xl font-light text-white mb-1">Optimal</div>
             <p className="text-xs text-zinc-500">All protocols operating within nominal parameters.</p>

@@ -5,9 +5,11 @@ import { Shield, Zap, Globe, ChevronRight } from 'lucide-react';
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-amber-500/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-amber-500/5 blur-[120px] pointer-events-none" />
+      {/* Atmospheric Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/10 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-500/5 blur-[120px]" />
+      </div>
       
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         <motion.div
@@ -23,7 +25,7 @@ const Hero = () => {
             System Operational
           </div>
           
-          <h1 className="hero-text text-6xl md:text-8xl font-bold tracking-tighter mb-8">
+          <h1 className="hero-text text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9]">
             ZENITH<br />
             <span className="text-amber-500">PROTOCOL</span>
           </h1>
@@ -37,7 +39,7 @@ const Hero = () => {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="glow-button btn-primary flex items-center gap-2 group"
+              className="px-8 py-3 rounded-full font-semibold bg-amber-500 text-black hover:bg-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.3)] flex items-center gap-2 group"
             >
               Initialize Protocol
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -45,7 +47,7 @@ const Hero = () => {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="glow-button btn-outline"
+              className="px-8 py-3 rounded-full font-semibold border border-white/20 text-white hover:bg-white/10"
             >
               View Documentation
             </motion.button>
